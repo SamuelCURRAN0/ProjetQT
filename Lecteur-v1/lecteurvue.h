@@ -1,24 +1,24 @@
-#ifndef LECTEURVUE_H
-#define LECTEURVUE_H
+#ifndef LECTEURVUEV1_H
+#define LECTEURVUEV1_H
 
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class LecteurVue; }
+namespace Ui { class lecteurVue; }
 QT_END_NAMESPACE
 
-class LecteurVue : public QMainWindow
+class lecteurVue : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    LecteurVue(QWidget *parent = nullptr);
-    ~LecteurVue();
-
-public slots:
+    lecteurVue(QWidget *parent = nullptr);
+    ~lecteurVue();
+private slots :
+    void reculer();
     void avancer();
-
+    void modeLecture();
 private:
-    Ui::LecteurVue *ui;
+    Ui::lecteurVue *ui;
 };
-#endif // LECTEURVUE_H
+#endif // LECTEURVUEV1_H

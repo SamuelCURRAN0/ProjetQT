@@ -5,9 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    LecteurVue w;
-    qDebug("test");
-
+    lecteurVue w;
     w.show();
     return a.exec();
 }

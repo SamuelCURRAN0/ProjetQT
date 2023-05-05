@@ -1,50 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LecteurVue</class>
- <widget class="QMainWindow" name="LecteurVue">
+ <class>lecteurVue</class>
+ <widget class="QMainWindow" name="lecteurVue">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>947</width>
-    <height>600</height>
+    <width>1000</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>LecteurVue</string>
+   <string>lecteurVueV1</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>947</width>
-     <height>557</height>
-    </size>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>50</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Play</string>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGraphicsView" name="graphicsView"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>*titre de l'image*</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>*catégorie de l'image*</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bArriere">
+          <property name="text">
+           <string>Arrière</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bModeLecture">
+          <property name="text">
+           <string>Mode Lecture</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bAvant">
+          <property name="text">
+           <string>Avant</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>numero image / nbr image</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -53,7 +105,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>947</width>
+     <width>1000</width>
      <height>22</height>
     </rect>
    </property>
@@ -61,34 +113,63 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionOuvrir"/>
+    <addaction name="actionFermer"/>
+    <addaction name="separator"/>
+    <addaction name="actionAvancer"/>
+    <addaction name="actionArri_re"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuParam_tre">
     <property name="title">
      <string>Paramètre</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuParam_tre"/>
+   <addaction name="menuAide"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar">
-   <property name="layoutDirection">
-    <enum>Qt::RightToLeft</enum>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOuvrir">
+   <property name="text">
+    <string>Ouvrir</string>
    </property>
-  </widget>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
+   <property name="shortcut">
+    <string>Ctrl+0</string>
    </property>
-   <property name="allowedAreas">
-    <set>Qt::BottomToolBarArea|Qt::RightToolBarArea|Qt::TopToolBarArea</set>
+  </action>
+  <action name="actionFermer">
+   <property name="text">
+    <string>Fermer</string>
    </property>
-   <attribute name="toolBarArea">
-    <enum>RightToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAvancer">
+   <property name="text">
+    <string>Avancer</string>
+   </property>
+  </action>
+  <action name="actionArri_re">
+   <property name="text">
+    <string>Arrière</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
