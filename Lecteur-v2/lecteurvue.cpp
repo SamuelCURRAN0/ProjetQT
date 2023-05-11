@@ -28,7 +28,7 @@ void lecteurVue::avancer()
     qDebug("avancer");
     QImage monImage("//haya/dossiersetud_BaieSsd/scurran/Documents/Mes images/Requete11");
     qDebug() << monImage.size().width() << "x" << monImage.size().height();
-    QLabel* label = ui->label;
+    QLabel* label = ui->Image;
     //on donne l'image au label
     label->setPixmap(QPixmap("//haya/dossiersetud_BaieSsd/scurran/Documents/Mes images/Requete11"));
     label->show();
