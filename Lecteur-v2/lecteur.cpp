@@ -35,13 +35,13 @@ void Lecteur::chargerDiaporama()
     _diaporama.push_back(imageACharger);
     cout << "Le diaporama a ete charger avec "  << nbImages() << "Images "<< endl;
      // trier le contenu du diaporama par ordre croissant selon le rang de l'image dans le diaporama
-    for(unsigned int i = 0; i < nbImages(); i++)
+    for(unsigned int indiceImageUne = 0; indiceImageUne < nbImages(); indiceImageUne++)
     {
-        for(unsigned int idice2 = i+1; idice2 < nbImages(); idice2++)
+        for(unsigned int indiceImageDeux = indiceImageUne+1; indiceImageDeux < nbImages(); indiceImageDeux++)
         {
-            if(_diaporama[i]->getRang()> _diaporama[idice2]->getRang())
+            if(_diaporama[indiceImageUne]->getRang()> _diaporama[indiceImageDeux]->getRang())
             {
-                echangerImage(i, idice2);
+                echangerImage(indiceImageUne, indiceImageDeux);
             }
         }
     }

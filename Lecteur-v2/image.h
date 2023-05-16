@@ -9,7 +9,6 @@ class Image
 public:
     Image(unsigned int pRang=0,
               string pCategorie="", string pTitre="", string pChemin = "");
-    Image(Image& ImageOriginale);
     unsigned int getRang();
     string getCategorie();
     string getTitre();

@@ -7,13 +7,6 @@ Image::Image(unsigned int pRang, string pCategorie, string pTitre, string pChemi
     _titre = pTitre;
     _chemin = pChemin;
 }
-Image::Image(Image& ImageOriginale)
-{
-    _rang = ImageOriginale._rang;
-    _categorie = ImageOriginale._categorie;
-    _titre = ImageOriginale._titre;
-    _chemin = ImageOriginale._chemin;
-}
 unsigned int Image::getRang()
 {
     return _rang;
