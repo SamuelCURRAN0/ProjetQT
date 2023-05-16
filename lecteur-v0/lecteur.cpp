@@ -40,7 +40,7 @@ void Lecteur::changerDiaporama(unsigned int pNumDiaporama)
 
 void Lecteur::echangerImage(Image* imageUne, Image* imageDeux)
 {
-    Image* copieImage = imageUne;
+    Image copieImage = imageUne;
     imageUne = imageDeux;
     imageDeux = copieImage;
 }

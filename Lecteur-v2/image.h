@@ -1,6 +1,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 #include <iostream>
+#include <QLabel>
 using namespace std;
 
 class Image
@@ -8,11 +9,12 @@ class Image
 public:
     Image(unsigned int pRang=0,
               string pCategorie="", string pTitre="", string pChemin = "");
+    Image(Image& ImageOriginale);
     unsigned int getRang();
     string getCategorie();
     string getTitre();
     string getChemin();
-    void afficher();           // affiche tous les champs de l'image
+    void afficher(QLabel* labelSupport, QLabel* titreLabel, QLabel* categorieLabel);     // affiche tous les champs de l'image
 
 private:
     unsigned int _rang;         /* rang de l'image au sein du diaporama
