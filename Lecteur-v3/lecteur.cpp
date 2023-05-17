@@ -8,7 +8,7 @@ Lecteur::Lecteur(QWidget *parent)
     _numDiaporamaCourant = 0;   // =  le lecteur est vide
     ui->setupUi(this);
     ui->statusbar->showMessage("Statut du diapo");
-
+    modeAuto = false;
     connect(ui->actionAvancer, SIGNAL(triggered()), this, SLOT(avancer()));
     connect(ui->actionArriere, SIGNAL(triggered()), this, SLOT(reculer()));
     connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
@@ -51,17 +51,6 @@ void Lecteur::chargerDiaporama()
     cout << "Diaporama num. " << numDiaporamaCourant() << " selectionne. " << endl;
     cout << nbImages() << " images chargees dans le diaporama" << endl;
 }
-void Lecteur::aProposDe()
-{
-    QMessageBox *msgBox = new QMessageBox;
-    msgBox->setIcon(QMessageBox::Information);
-    msgBox->setStandardButtons(QMessageBox::Ok);
-    msgBox->setText("Créee par :\r\n- Curran Samuel\r\n- Beltzer Gabriel\r\n- Eyherabide Kepa.\r\nCréee le : 03/05/2023.\r\nVersion : v2");
-    msgBox->setWindowTitle("A propos de l'application");
-    msgBox->setGeometry(700,500,150,100);
-    msgBox->setSizeGripEnabled(false);
-    msgBox->exec();
-}
 void Lecteur::viderDiaporama()
 {
     if (nbImages () > 0)
@@ -79,7 +68,17 @@ void Lecteur::viderDiaporama()
 
 }
 
-
+void Lecteur::aProposDe()
+{
+    QMessageBox *msgBox = new QMessageBox;
+    msgBox->setIcon(QMessageBox::Information);
+    msgBox->setStandardButtons(QMessageBox::Ok);
+    msgBox->setText("Créee par :\r\n- Curran Samuel\r\n- Beltzer Gabriel\r\n- Eyherabide Kepa.\r\nCréee le : 03/05/2023.\r\nVersion : v3");
+    msgBox->setWindowTitle("A propos de l'application");
+    msgBox->setGeometry(700,500,150,100);
+    msgBox->setSizeGripEnabled(false);
+    msgBox->exec();
+}
 
 void Lecteur::afficher()
 {
@@ -169,4 +168,17 @@ void Lecteur::reculer()
 void Lecteur::modeLecture()
 {
     qDebug("Change de mode");
+    modeAuto = modeAuto?false:true;
+    if(modeAuto)
+    {
+        timerModeAuto = new QTimer(this);
+        connect(timerModeAuto, SIGNAL(timeout()), this, SLOT(avancer()));
+        timerModeAuto->start(timeAuto*1000);
+    }
+    else
+    {
+        qDebug("disconnect");
+        disconnect(timerModeAuto, SIGNAL(timeout()), this, SLOT(avancer()));
+    }
+
 }

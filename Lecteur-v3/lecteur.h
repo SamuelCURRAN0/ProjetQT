@@ -6,6 +6,7 @@
 #include <QtGui/QImage>
 #include "image.h"
 #include <vector>
+#include <QTimer>
 #include <QMessageBox>
 
 typedef vector<Image*> Diaporama;   // Structure de données contenant les infos sur les images
@@ -29,20 +30,22 @@ public:
     unsigned int numDiaporamaCourant();
     void chargerDiaporama();    // charge dans _diaporama les images du _numDiaporamaCourant
     void viderDiaporama();      // vide _diaporama de tous ses objets image et les delete
-
 private:
     unsigned _numDiaporamaCourant;   // numéro du diaporama courant, par défaut 0
     Diaporama _diaporama;            // pointeurs vers les images du diaporama
     unsigned int _posImageCourante;  /* position, dans le diaporama,
                                         de l'image courante.
-                                        Indéfini quand diaporama vide.
+                                       Indéfini quand diaporama vide.
                                         Démarre à 0 quand diaporama non vide */
+    QTimer *timerModeAuto; // Timer pour le mode Auto
+    bool modeAuto; // Mode Auto activer ?
+    float timeAuto = 5; // Temp en sec du mode auto
     Ui::Lecteur *ui;
 
 private slots :
     void reculer(); // décrémente _posImageCourante, modulo nbImages()
     void avancer();// incrémente _posImageCourante, modulo nbImages()
-    void modeLecture();
+    void modeLecture(); // Activer/Desactiver le mode Lecture
     void aProposDe(); // Affiche un message a propos de
 };
 #endif // LECTEUR_H
