@@ -13,7 +13,7 @@ Lecteur::Lecteur(QWidget *parent)
     connect(ui->actionArriere, SIGNAL(triggered()), this, SLOT(btnReculer()));
     connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
-    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(changerVitesse()));
+    connect(ui->actionVitesse, SIGNAL(triggered()), this, SLOT(demandeChangementVitesse()));
 
     connect(ui->bAvant, SIGNAL(clicked()), this, SLOT(btnAvancer()));
     connect(ui->bArriere, SIGNAL(clicked()), this, SLOT(btnReculer()));
@@ -211,8 +211,22 @@ void Lecteur::modeLecture()
     }
 
 }
-void Lecteur::changerVitesse()
+void Lecteur::demandeChangementVitesse()
 {
-    RegleurVitesse* rv = new RegleurVitesse(this);
+    RegleurVitesse* rv = new RegleurVitesse(this, getTimeAuto());
+    connect(rv, SIGNAL(changerVitesse(float)), this, SLOT(changerVitesse(float)));
     rv->exec();
+}
+float Lecteur::getTimeAuto()
+{
+    return _timeAuto;
+}
+void Lecteur::setTimeAuto(float temps)
+{
+    _timeAuto = temps;
+}
+void Lecteur::changerVitesse(float temps)
+{
+    qDebug() << temps;
+    setTimeAuto(temps);
 }

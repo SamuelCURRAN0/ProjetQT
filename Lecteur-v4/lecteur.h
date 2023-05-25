@@ -34,6 +34,9 @@ public:
     void setPosImageCourante(unsigned int posImage);
     void reculer(); // décrémente _posImageCourante, modulo nbImages()
     void avancer();// incrémente _posImageCourante, modulo nbImages()
+    float getTimeAuto();
+    void setTimeAuto(float temps);
+
 private:
     unsigned int _numDiaporamaCourant;   // numéro du diaporama courant, par défaut 0
     Diaporama _diaporama;            // pointeurs vers les images du diaporama
@@ -53,6 +56,8 @@ private slots :
     void aProposDe(); // Affiche un message a propos de
     void modeAutoAvancer();
     void modeAutoReculer();
-    void changerVitesse();
+    void demandeChangementVitesse();
+    void changerVitesse(float temps);
+
 };
 #endif // LECTEUR_H

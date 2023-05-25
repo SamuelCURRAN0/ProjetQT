@@ -12,11 +12,18 @@ class RegleurVitesse : public QDialog
     Q_OBJECT
 
 public:
-    explicit RegleurVitesse(QWidget *parent = nullptr);
+    explicit RegleurVitesse(QWidget *parent, float temps);
     ~RegleurVitesse();
 
+signals:
+    void changerVitesse(float temps);
+
 private:
-    Ui::RegleurVitesse *ui;
+    Ui::RegleurVitesse* ui;
+private slots:
+    void confirmerVitesse();
+
+
 };
 
 #endif // REGLEURVITESSE_H
