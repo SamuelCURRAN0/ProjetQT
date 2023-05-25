@@ -8,6 +8,7 @@
 #include <vector>
 #include <QTimer>
 #include <QMessageBox>
+#include "regleurvitesse.h"
 
 typedef vector<Image*> Diaporama;   // Structure de données contenant les infos sur les images
 
@@ -52,5 +53,6 @@ private slots :
     void aProposDe(); // Affiche un message a propos de
     void modeAutoAvancer();
     void modeAutoReculer();
+    void changerVitesse();
 };
 #endif // LECTEUR_H
