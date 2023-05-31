@@ -24,7 +24,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Image</string>
       </property>
      </widget>
     </item>
@@ -84,7 +84,7 @@
         <item>
          <widget class="QPushButton" name="bArriere">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="text">
            <string>Arrière</string>
@@ -93,6 +93,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="bModeLecture">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Démarrer Diaporama</string>
           </property>
@@ -100,6 +103,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="bAvant">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Avant</string>
           </property>
@@ -178,8 +184,8 @@
      <addaction name="actionVitesse"/>
     </widget>
     <addaction name="menuParam_trer"/>
-    <addaction name="actionCharger_diaporama"/>
-    <addaction name="action_Enlever_diaporama"/>
+    <addaction name="actionChargerDiaporama"/>
+    <addaction name="actionEnleverDiaporama"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -217,11 +223,17 @@
    </property>
   </action>
   <action name="actionAvancer">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Avancer</string>
    </property>
   </action>
   <action name="actionArriere">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Arrière</string>
    </property>
@@ -231,12 +243,12 @@
     <string>Vitesse</string>
    </property>
   </action>
-  <action name="actionCharger_diaporama">
+  <action name="actionChargerDiaporama">
    <property name="text">
     <string>Charger diaporama</string>
    </property>
   </action>
-  <action name="action_Enlever_diaporama">
+  <action name="actionEnleverDiaporama">
    <property name="text">
     <string> Enlever diaporama </string>
    </property>

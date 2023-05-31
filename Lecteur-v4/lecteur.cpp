@@ -14,10 +14,13 @@ Lecteur::Lecteur(QWidget *parent)
     connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
     connect(ui->actionVitesse, SIGNAL(triggered()), this, SLOT(demandeChangementVitesse()));
+    connect(ui->actionChargerDiaporama, SIGNAL(triggered()), this, SLOT(btnChargerDiaporama()));
+    connect(ui->actionEnleverDiaporama, SIGNAL(triggered()), this, SLOT(btnEnleverDiaporama()));
 
     connect(ui->bAvant, SIGNAL(clicked()), this, SLOT(btnAvancer()));
     connect(ui->bArriere, SIGNAL(clicked()), this, SLOT(btnReculer()));
     connect(ui->bModeLecture, SIGNAL(clicked()), this, SLOT(modeLecture()));
+
 }
 
 void Lecteur::chargerDiaporama()
@@ -47,6 +50,11 @@ void Lecteur::chargerDiaporama()
         }
     }
     setPosImageCourante(1);
+    ui->bAvant->setEnabled(true);
+    ui->bArriere->setEnabled(true);
+    ui->bModeLecture->setEnabled(true);
+    ui->actionAvancer->setEnabled(true);
+    ui->actionArriere->setEnabled(true);
     cout << "Diaporama num. " << numDiaporamaCourant() << " selectionne. " << endl;
     cout << nbImages() << " images chargees dans le diaporama" << endl;
 }
@@ -64,6 +72,20 @@ void Lecteur::viderDiaporama()
      _posImageCourante = 0;
     }
     cout << nbImages() << " images restantes dans le diaporama." << endl;
+    ui->bAvant->setEnabled(false);
+    ui->bArriere->setEnabled(false);
+    ui->bModeLecture->setEnabled(false);
+    ui->actionAvancer->setEnabled(false);
+    ui->actionArriere->setEnabled(false);
+    ui->TexteNumeroImage->setText("numero image / nbr image");
+    ui->TexteCategorie->setText("*catégorie de l'image*");
+    ui->TexteTitre->setText("*titre de l'image*");
+    ui->Image->setText("Image");
+
+    if(_modeAuto)
+    {
+        modeLecture(); //Désactiver le mode Auto si il est Actif
+    }
 
 }
 
@@ -72,7 +94,7 @@ void Lecteur::aProposDe()
     QMessageBox *msgBox = new QMessageBox;
     msgBox->setIcon(QMessageBox::Information);
     msgBox->setStandardButtons(QMessageBox::Ok);
-    msgBox->setText("Créee par :\r\n- Curran Samuel\r\n- Beltzer Gabriel\r\n- Eyherabide Kepa.\r\nCréee le : 03/05/2023.\r\nVersion : v3");
+    msgBox->setText("Créee par :\r\n- Curran Samuel\r\n- Beltzer Gabriel\r\n- Eyherabide Kepa.\r\nCréee le : 03/05/2023.\r\nVersion : v4");
     msgBox->setWindowTitle("A propos de l'application");
     msgBox->setGeometry(700,500,150,100);
     msgBox->setSizeGripEnabled(false);
@@ -187,10 +209,6 @@ void Lecteur::modeAutoAvancer()
 {
     avancer();
 }
-void Lecteur::modeAutoReculer()
-{
-    reculer();
-}
 void Lecteur::modeLecture()
 {
     qDebug("Change de mode");
@@ -225,7 +243,19 @@ void Lecteur::setTimeAuto(float temps)
 {
     _timeAuto = temps;
 }
+bool Lecteur::diaporamaCharger()
+{
+    return nbImages()!=0;
+}
 void Lecteur::changerVitesse(float temps)
 {
     setTimeAuto(temps);
+}
+void Lecteur::btnChargerDiaporama()
+{
+    changerDiaporama(1);
+}
+void Lecteur::btnEnleverDiaporama()
+{
+    viderDiaporama();
 }

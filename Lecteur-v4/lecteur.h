@@ -36,6 +36,7 @@ public:
     void avancer();// incrémente _posImageCourante, modulo nbImages()
     float getTimeAuto();
     void setTimeAuto(float temps);
+    bool diaporamaCharger();//Retourne vrai si diaporama charger, retourne faux sinon
 
 private:
     unsigned int _numDiaporamaCourant;   // numéro du diaporama courant, par défaut 0
@@ -55,9 +56,10 @@ private slots :
     void modeLecture(); // Activer/Desactiver le mode Lecture
     void aProposDe(); // Affiche un message a propos de
     void modeAutoAvancer();
-    void modeAutoReculer();
     void demandeChangementVitesse();
     void changerVitesse(float temps);
+    void btnChargerDiaporama();
+    void btnEnleverDiaporama();
 
 };
 #endif // LECTEUR_H
