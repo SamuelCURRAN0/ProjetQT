@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.2, 2023-05-25T10:16:55. -->
+<!-- Written by QtCreator 7.0.2, 2023-05-31T14:12:29. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{042bde81-a5da-4ac8-ab1a-e759af1f342f}</value>
+  <value type="QByteArray">{b4b0ac4f-ce74-42a6-9243-c1a7a777f9f2}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -138,8 +138,8 @@
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">F:\traveaux-pratiques\Semestre2\S2.01-Dev-d-une-application\build-Lecteur-v3-Desktop_Qt_6_3_1_MinGW_64_bit-Release</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">F:/traveaux-pratiques/Semestre2/S2.01-Dev-d-une-application/build-Lecteur-v3-Desktop_Qt_6_3_1_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">F:\traveaux-pratiques\Semestre2\S2.01-Dev-d-une-application\build-Lecteur-v4-Desktop_Qt_6_3_1_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">F:/traveaux-pratiques/Semestre2/S2.01-Dev-d-une-application/build-Lecteur-v4-Desktop_Qt_6_3_1_MinGW_64_bit-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -179,8 +179,8 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">F:\traveaux-pratiques\Semestre2\S2.01-Dev-d-une-application\build-Lecteur-v3-Desktop_Qt_6_3_1_MinGW_64_bit-Profile</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">F:/traveaux-pratiques/Semestre2/S2.01-Dev-d-une-application/build-Lecteur-v3-Desktop_Qt_6_3_1_MinGW_64_bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">F:\traveaux-pratiques\Semestre2\S2.01-Dev-d-une-application\build-Lecteur-v4-Desktop_Qt_6_3_1_MinGW_64_bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">F:/traveaux-pratiques/Semestre2/S2.01-Dev-d-une-application/build-Lecteur-v4-Desktop_Qt_6_3_1_MinGW_64_bit-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>

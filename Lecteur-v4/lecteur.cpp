@@ -227,6 +227,5 @@ void Lecteur::setTimeAuto(float temps)
 }
 void Lecteur::changerVitesse(float temps)
 {
-    qDebug() << temps;
     setTimeAuto(temps);
 }

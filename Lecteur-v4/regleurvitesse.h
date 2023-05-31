@@ -2,6 +2,7 @@
 #define REGLEURVITESSE_H
 
 #include <QDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class RegleurVitesse;

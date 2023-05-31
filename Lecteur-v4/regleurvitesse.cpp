@@ -18,8 +18,12 @@ void RegleurVitesse::confirmerVitesse()
         if(vitesse > 0)
         {
             emit changerVitesse(vitesse);
+            return;
         }
     }
+    QMessageBox messageBox;
+    messageBox.critical(0,"Erreur","Vitesse Incorrecte !");
+    messageBox.setFixedSize(500,200);
 }
 RegleurVitesse::~RegleurVitesse()
 {
