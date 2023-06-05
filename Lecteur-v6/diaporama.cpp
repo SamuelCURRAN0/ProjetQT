@@ -11,7 +11,7 @@ void Diaporama::chargerDiaporama(unsigned int pNumDiaporama)
             "FROM DiaposDansDiaporama "
             "JOIN Diapos ON Diapos.idphoto = DiaposDansDiaporama.idDiapo "
             "JOIN Familles on Familles.idFamille = Diapos.idFam "
-            "WHERE DiaposDansDiaporama.idDiaporama = 1;";
+            "WHERE DiaposDansDiaporama.idDiaporama = :numDiapo;";
     query.prepare(commande);
     query.bindValue(":numDiapo", pNumDiaporama);
     query.exec();

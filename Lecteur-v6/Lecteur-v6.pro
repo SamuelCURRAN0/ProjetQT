@@ -15,6 +15,7 @@ SOURCES += \
     image.cpp \
     lecteur.cpp \
     main.cpp \
+    regleurdiaporama.cpp \
     regleurvitesse.cpp
 
 HEADERS += \
@@ -22,10 +23,12 @@ HEADERS += \
     diaporama.h \
     image.h \
     lecteur.h \
+    regleurdiaporama.h \
     regleurvitesse.h
 
 FORMS += \
     lecteur.ui \
+    regleurdiaporama.ui \
     regleurvitesse.ui
 
 # Default rules for deployment.

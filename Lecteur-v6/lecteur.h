@@ -11,7 +11,7 @@
 #include "regleurvitesse.h"
 #include "database.h"
 #include "diaporama.h"
-
+#include "regleurdiaporama.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Lecteur; }
@@ -51,6 +51,6 @@ private slots :
     void changerVitesse(float temps); // Nouvelle valeur du temps auto
     void btnChargerDiaporama();// charger le diapo
     void btnEnleverDiaporama(); // vider diapo
-
+    void chargerDiapo(unsigned int num);
 };
 #endif // LECTEUR_H

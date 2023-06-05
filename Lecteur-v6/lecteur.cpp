@@ -79,7 +79,6 @@ void Lecteur::afficher()
      * 1) vide (si num. de diaporama = 0) OU BIEN  numéro de diaporama affiché
      * 2) Si un diaporama courant est chargé (num. de diaporama > 0), affiche l'image courante OU BIEN 'diaporama vide'
      *     si ce diaporama n'a aucun image */
-    qDebug("afficher");
     ui->TexteNumeroImage->setText(QString::number(_diaporama->numImagesCourante()) + "/" + QString::number(_diaporama->nbImages()));
     if(_diaporama->diaporamaCharger())
     {
@@ -184,9 +183,15 @@ void Lecteur::changerVitesse(float temps)
 {
     setTimeAuto(temps);
 }
+void Lecteur::chargerDiapo(unsigned int num)
+{
+    changerDiaporama(num);
+}
 void Lecteur::btnChargerDiaporama()
 {
-    changerDiaporama(1);
+    RegleurDiaporama* rd = new RegleurDiaporama();
+    connect(rd, SIGNAL(changerDiapo(unsigned int)), this, SLOT(chargerDiapo(unsigned int)));
+    rd->exec();
 }
 void Lecteur::btnEnleverDiaporama()
 {
