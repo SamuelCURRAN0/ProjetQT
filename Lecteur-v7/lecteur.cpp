@@ -16,6 +16,7 @@ Lecteur::Lecteur(QWidget *parent)
     connect(ui->actionVitesse, SIGNAL(triggered()), this, SLOT(demandeChangementVitesse()));
     connect(ui->actionChargerDiaporama, SIGNAL(triggered()), this, SLOT(btnChargerDiaporama()));
     connect(ui->actionEnleverDiaporama, SIGNAL(triggered()), this, SLOT(btnEnleverDiaporama()));
+    connect(ui->actionModifierDiaporama,  SIGNAL(triggered()), this, SLOT(demandeChangementModifierDiapo()));
 
     connect(ui->bAvant, SIGNAL(clicked()), this, SLOT(btnAvancer()));
     connect(ui->bArriere, SIGNAL(clicked()), this, SLOT(btnReculer()));
@@ -58,6 +59,7 @@ void Lecteur::chargerDiaporama(unsigned int pNumDiaporama)
         ui->bModeLecture->setEnabled(true);
         ui->actionAvancer->setEnabled(true);
         ui->actionArriere->setEnabled(true);
+        ui->actionModifierDiaporama->setEnabled(true);
         afficher();
     }
     else
@@ -75,6 +77,7 @@ void Lecteur::viderDiaporama()
     ui->bModeLecture->setEnabled(false);
     ui->actionAvancer->setEnabled(false);
     ui->actionArriere->setEnabled(false);
+    ui->actionModifierDiaporama->setEnabled(false);
     ui->TexteNumeroImage->setText("numero image / nbr image");
     ui->TexteCategorie->setText("*catégorie de l'image*");
     ui->TexteTitre->setText("*titre de l'image*");
@@ -114,7 +117,7 @@ void Lecteur::afficher()
         QString titre =  QString::fromStdString(_diaporama->imageCourante()->getTitre());
         ui->TexteCategorie->setText(categorie);
         ui->TexteTitre->setText(titre);
-        ui->Image->setPixmap(QPixmap(chemin));
+        ui->Image->setPixmap(QPixmap("C:\\" + chemin));
     }
     else
     {
@@ -223,4 +226,62 @@ void Lecteur::btnChargerDiaporama()
 void Lecteur::btnEnleverDiaporama()
 {
     viderDiaporama();
+}
+void Lecteur::demandeChangementModifierDiapo()
+{
+    ModifierDiaporama* md = new ModifierDiaporama(this,
+                                                  _diaporama->getIntituleDiapo(),
+                                                  QString::fromStdString(_diaporama->imageCourante()->getTitre()),
+                                                  QString::fromStdString(_diaporama->imageCourante()->getChemin()),
+                                                  _diaporama->imageCourante()->getRang());
+    connect(md, SIGNAL(modifierDiaporama(QString, QString, QString, unsigned int)), this, SLOT(modifierDiaporama(QString, QString, QString, unsigned int)));
+    md->exec();
+}
+void Lecteur::modifierDiaporama(QString intituleDiapo, QString intituleImage, QString cheminImage, unsigned int rangImage)
+{
+    if(intituleDiapo != _diaporama->getIntituleDiapo())
+    {
+        QSqlQuery query;
+        QString sqlCommand = "UPDATE Diaporamas "
+                             "SET Diaporamas.`titre Diaporama` = :intituleDiapo "
+                             "WHERE idDiaporama = :idDiapo;";
+        query.prepare(sqlCommand);
+        query.bindValue(":idDiapo", _diaporama->getNumDiapoCharger());
+        query.bindValue(":intituleDiapo", intituleDiapo);
+        query.exec();
+    }
+    if(intituleImage != QString::fromStdString(_diaporama->imageCourante()->getTitre()))
+    {
+        QSqlQuery query;
+        QString sqlCommand = "UPDATE Diapos "
+                             "SET Diapos.titrePhoto = :nouvelleTitre "
+                             "WHERE Diapos.idphoto = :idphoto;";
+        query.prepare(sqlCommand);
+        query.bindValue(":idphoto", _diaporama->imageCourante()->getCodeImage());
+        query.bindValue(":nouvelleTitre", intituleImage);
+        query.exec();
+    }
+    if(cheminImage != QString::fromStdString(_diaporama->imageCourante()->getChemin()))
+    {
+        QSqlQuery query;
+        QString sqlCommand = "UPDATE Diapos "
+                             "SET Diapos.uriPhoto = :nouvelleChemin "
+                             "WHERE Diapos.idphoto = :idphoto;";
+        query.prepare(sqlCommand);
+        query.bindValue(":idphoto", _diaporama->imageCourante()->getCodeImage());
+        query.bindValue(":nouvelleChemin", cheminImage);
+        query.exec();
+    }
+    if(rangImage != _diaporama->imageCourante()->getRang())
+    {
+        QSqlQuery query;
+        QString sqlCommand = "UPDATE DiaposDansDiaporama "
+                             "SET DiaposDansDiaporama.rang = :nouvelleRang "
+                             "WHERE DiaposDansDiaporama.idDiapo = :idphoto;";
+        query.prepare(sqlCommand);
+        query.bindValue(":idphoto", _diaporama->imageCourante()->getCodeImage());
+        query.bindValue(":nouvelleRang", rangImage);
+        query.exec();
+    }
+    changerDiaporama(_diaporama->getNumDiapoCharger());
 }

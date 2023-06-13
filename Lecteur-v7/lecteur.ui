@@ -167,6 +167,7 @@
     </property>
     <addaction name="actionOuvrir"/>
     <addaction name="actionFermer"/>
+    <addaction name="actionModifierDiaporama"/>
     <addaction name="separator"/>
     <addaction name="actionAvancer"/>
     <addaction name="actionArriere"/>
@@ -250,6 +251,14 @@
   <action name="actionVitesse">
    <property name="text">
     <string>Vitesse de défilement </string>
+   </property>
+  </action>
+  <action name="actionModifierDiaporama">
+   <property name="text">
+    <string>ModifierDiaporama</string>
+   </property>
+   <property name="toolTip">
+    <string>ModifierDiaporama</string>
    </property>
   </action>
  </widget>

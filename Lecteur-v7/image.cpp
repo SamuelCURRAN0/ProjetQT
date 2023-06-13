@@ -1,11 +1,16 @@
 #include "image.h"
 
-Image::Image(unsigned int pRang, string pCategorie, string pTitre, string pChemin)
+Image::Image(unsigned int codeImage,unsigned int pRang, string pCategorie, string pTitre, string pChemin)
 {
+    _codeImage = codeImage;
     _rang = pRang;
     _categorie = pCategorie;
     _titre = pTitre;
     _chemin = pChemin;
+}
+unsigned int Image::getCodeImage()
+{
+    return _codeImage;
 }
 unsigned int Image::getRang()
 {

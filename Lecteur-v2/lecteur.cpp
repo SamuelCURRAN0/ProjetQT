@@ -25,13 +25,13 @@ void Lecteur::chargerDiaporama()
        Dans une version ultérieure, ces données proviendront d'une base de données,
        et correspondront au diaporama choisi */
     Image* imageACharger;
-    imageACharger = new Image(3, "personne", "Blanche Neige", "F:\\traveaux-pratiques\\cartesDisney\\Disney_2.gif");
+    imageACharger = new Image(3, "personne", "Blanche Neige", "C:\\cartesDisney\\Disney_2.gif");
     _diaporama.push_back(imageACharger);
-    imageACharger = new Image(2, "personne", "Cendrillon", "F:\\traveaux-pratiques\\cartesDisney\\Disney_4.gif");
+    imageACharger = new Image(2, "personne", "Cendrillon", "C:\\cartesDisney\\Disney_4.gif");
     _diaporama.push_back(imageACharger);
-    imageACharger = new Image(4, "animal", "Mickey", "F:\\traveaux-pratiques\\cartesDisney\\Disney_3.gif");
+    imageACharger = new Image(4, "animal", "Mickey", "C:\\cartesDisney\\Disney_3.gif");
     _diaporama.push_back(imageACharger);
-    imageACharger = new Image(1, "personne", "Grincheux", "F:\\traveaux-pratiques\\cartesDisney\\Disney_1.gif");
+    imageACharger = new Image(1, "personne", "Grincheux", "C:\\cartesDisney\\Disney_1.gif");
     _diaporama.push_back(imageACharger);
     cout << "Le diaporama a ete charger avec "  << nbImages() << "Images "<< endl;
      // trier le contenu du diaporama par ordre croissant selon le rang de l'image dans le diaporama

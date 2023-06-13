@@ -16,8 +16,8 @@ RegleurDiaporama::~RegleurDiaporama()
 
 void RegleurDiaporama::confirmerDiapo()
 {
-    bool* ok = new bool();
-    unsigned int numDiapo = ui->saisieNumDiapo->text().toUInt(ok);
+    bool ok;
+    unsigned int numDiapo = ui->saisieNumDiapo->text().toUInt(&ok);
     if(ok)
     {
         if(numDiapo >= 0)

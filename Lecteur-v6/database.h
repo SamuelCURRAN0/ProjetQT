@@ -15,8 +15,8 @@ class Database
 {
 public:
     Database();
-    bool openDataBase();
-    void closeDataBase();
+    bool openDataBase(); // Ouvre la base de donnée, retourne si Vrai si la base de donnée a été ouverte
+    void closeDataBase(); // ferme la base de donnée
 
 private:
     QSqlDatabase mydb;

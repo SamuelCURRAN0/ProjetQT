@@ -19,9 +19,12 @@ public:
     void viderDiaporama(); // vide le diaporama
     bool diaporamaCharger(); // Vrai -> Diapo pas vide, Faux -> Diapo vide
     Image* imageCourante(); // Retourne l'image courante
+    QString getIntituleDiapo(); // Retourne l'intitule du diapo
+    unsigned int getNumDiapoCharger(); // Retourne _numDiapoCharger
 private:
     listeImage _imageDiapo;   // Structure de données contenant les infos sur les images
     unsigned int _numImageCourant;   // numéro du diaporama courant, commence a 1
+    unsigned int _numDiapoCharger; //Numéro du diaporama charger
 };
 
 #endif // DIAPORAMA_H

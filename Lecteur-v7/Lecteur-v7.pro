@@ -15,6 +15,7 @@ SOURCES += \
     image.cpp \
     lecteur.cpp \
     main.cpp \
+    modifierdiaporama.cpp \
     regleurdiaporama.cpp \
     regleurvitesse.cpp
 
@@ -23,11 +24,13 @@ HEADERS += \
     diaporama.h \
     image.h \
     lecteur.h \
+    modifierdiaporama.h \
     regleurdiaporama.h \
     regleurvitesse.h
 
 FORMS += \
     lecteur.ui \
+    modifierdiaporama.ui \
     regleurdiaporama.ui \
     regleurvitesse.ui
 

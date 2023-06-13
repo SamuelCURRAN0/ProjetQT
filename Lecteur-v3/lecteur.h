@@ -50,7 +50,6 @@ private slots :
     void btnReculer(); // Idem pour reculer
     void modeLecture(); // Activer/Desactiver le mode Lecture
     void aProposDe(); // Affiche un message a propos de
-    void modeAutoAvancer();
-    void modeAutoReculer();
+    void modeAutoAvancer(); // Appeller par le mode Auto
 };
 #endif // LECTEUR_H

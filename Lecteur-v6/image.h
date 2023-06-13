@@ -8,11 +8,11 @@ class Image
 {
 public:
     Image(unsigned int pRang=0,
-              string pCategorie="", string pTitre="", string pChemin = "");
-    unsigned int getRang();
-    string getCategorie();
-    string getTitre();
-    string getChemin();
+              string pCategorie="", string pTitre="", string pChemin = "");// Constructeur
+    unsigned int getRang(); //getter
+    string getCategorie(); //getter
+    string getTitre(); //getter
+    string getChemin(); //getter
 private:
     unsigned int _rang;         /* rang de l'image au sein du diaporama
                                    auquel l'image est associée */

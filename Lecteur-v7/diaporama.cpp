@@ -7,7 +7,7 @@ Diaporama::Diaporama()
 bool Diaporama::chargerDiaporama(unsigned int pNumDiaporama)
 {
     QSqlQuery query;
-    QString commande = "SELECT DiaposDansDiaporama.rang, Familles.nomFamille, Diapos.titrePhoto,Diapos.uriPhoto "
+    QString commande = "SELECT Diapos.idphoto, DiaposDansDiaporama.rang, Familles.nomFamille, Diapos.titrePhoto,Diapos.uriPhoto "
             "FROM DiaposDansDiaporama "
             "JOIN Diapos ON Diapos.idphoto = DiaposDansDiaporama.idDiapo "
             "JOIN Familles on Familles.idFamille = Diapos.idFam "
@@ -15,10 +15,11 @@ bool Diaporama::chargerDiaporama(unsigned int pNumDiaporama)
     query.prepare(commande);
     query.bindValue(":numDiapo", pNumDiaporama);
     query.exec();
+
     Image* imageACharger;
     for(int i = 0; query.next(); i++)
     {
-         imageACharger = new Image(query.value(0).toUInt(), query.value(1).toString().toStdString(), query.value(2).toString().toStdString(), "F:\\traveaux-pratiques\\" + query.value(3).toString().toStdString());
+         imageACharger = new Image(query.value(0).toUInt(),query.value(1).toUInt(), query.value(2).toString().toStdString(), query.value(3).toString().toStdString(), query.value(4).toString().toStdString());
          _imageDiapo.push_back(imageACharger);
     }
 
@@ -36,6 +37,8 @@ bool Diaporama::chargerDiaporama(unsigned int pNumDiaporama)
     setPosImageCourante(1);
     cout << "Diaporama num. " << pNumDiaporama << " selectionne. " << endl;
     cout << nbImages() << " images chargees dans le diaporama" << endl;
+
+    _numDiapoCharger = diaporamaCharger() ? pNumDiaporama:0;
     return diaporamaCharger();
 }
 
@@ -57,6 +60,7 @@ void Diaporama::viderDiaporama()
                                       AND deletes the removed element */
         }
         _numImageCourant = 0;
+        _numDiapoCharger = 0;
     }
 }
 
@@ -93,8 +97,25 @@ Image* Diaporama::imageCourante()
 {
     return _imageDiapo[_numImageCourant - 1];
 }
-
+unsigned int Diaporama::getNumDiapoCharger()
+{
+    return _numDiapoCharger;
+}
 bool Diaporama::diaporamaCharger()
 {
     return nbImages() > 0;
+}
+
+QString Diaporama::getIntituleDiapo()
+{
+    QSqlQuery query;
+    QString cmdSql = "SELECT Diaporamas.`titre Diaporama` "
+            "FROM Diaporamas "
+            "WHERE Diaporamas.idDiaporama = :numDiapo;";
+    query.prepare(cmdSql);
+    query.bindValue(":numDiapo", _numDiapoCharger);
+    query.exec();
+    query.first();
+    return query.value(0).toString();
+
 }

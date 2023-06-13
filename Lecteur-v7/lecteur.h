@@ -12,6 +12,7 @@
 #include "database.h"
 #include "diaporama.h"
 #include "regleurdiaporama.h"
+#include "modifierdiaporama.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Lecteur; }
@@ -34,6 +35,7 @@ public:
     void setTimeAuto(float temps); // changer le temp du mode auto entre les images
     void avancer(); // Fonction pour faire avancer le diapo et afficher
     void reculer(); // Fonction reculer et afficher
+
 private:
     Diaporama *_diaporama;            // pointeurs vers les images du diaporama
     QTimer *timerModeAuto; // Timer pour le mode Auto
@@ -49,8 +51,10 @@ private slots :
     void modeAutoAvancer(); // Avancer tout les x seconde
     void demandeChangementVitesse(); // Ouvre la fenetre pour changer la duree du mode auto
     void changerVitesse(float temps); // Nouvelle valeur du temps auto
-    void btnChargerDiaporama();// charger le diapo
+    void btnChargerDiaporama();// charger le diapo ouvre une fenetre pour que l'utilisateur saisie le diapo a selectionner
     void btnEnleverDiaporama(); // vider diapo
-    void chargerDiapo(unsigned int num);
+    void chargerDiapo(unsigned int num); // Charge les images du diaporama
+    void demandeChangementModifierDiapo(); // Ouvre la fenetre pour modifier le diaporama courant
+    void modifierDiaporama(QString intituleDiapo, QString intituleImage, QString cheminImage, unsigned int rangImage); // Modifie les éléments du diapo
 };
 #endif // LECTEUR_H

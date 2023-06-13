@@ -51,6 +51,6 @@ private slots :
     void changerVitesse(float temps); // Nouvelle valeur du temps auto
     void btnChargerDiaporama();// charger le diapo
     void btnEnleverDiaporama(); // vider diapo
-    void chargerDiapo(unsigned int num);
+    void chargerDiapo(unsigned int num);// Charge les images du diaporama
 };
 #endif // LECTEUR_H

@@ -18,7 +18,7 @@ void Diaporama::chargerDiaporama(unsigned int pNumDiaporama)
     Image* imageACharger;
     for(int i = 0; query.next(); i++)
     {
-         imageACharger = new Image(query.value(0).toUInt(), query.value(1).toString().toStdString(), query.value(2).toString().toStdString(), "F:\\traveaux-pratiques\\" + query.value(3).toString().toStdString());
+         imageACharger = new Image(query.value(0).toUInt(), query.value(1).toString().toStdString(), query.value(2).toString().toStdString(), "C:\\" + query.value(3).toString().toStdString());
          _imageDiapo.push_back(imageACharger);
     }
 
